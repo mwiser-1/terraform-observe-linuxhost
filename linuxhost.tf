@@ -283,7 +283,7 @@ resource "observe_board" "single_host_board_metrics" {
   dataset = module.osquery.host.oid
   name    = "Linux Single Host Summary - BetaBoard with Metrics"
   type    = "singleton"
-  json = templatefile("/Users/martin/terraform/myinstance/terraform-observe-linuxhost/terraform-observe-linuxhost/boards/LinuxSingleHostSummaryMetrics.json", {
+  json = templatefile("${path.module}/terraform-observe-linuxhost/boards/LinuxSingleHostSummaryMetrics.json", {
   dataset_telegraf_systemMetrics = regexall(":([^/:]*)(/|$)", module.telegraf_system[0].system_metrics.oid)[0][0] # extract id from oid  
   dataset_server_host = regexall(":([^/:]*)(/|$)", module.osquery.host.oid)[0][0] # extract id from oid
   dataset_telegraf_memMetrics = regexall(":([^/:]*)(/|$)", module.telegraf_mem[0].mem_metrics.oid)[0][0] # extract id from oid
@@ -299,7 +299,7 @@ resource "observe_board" "host_interface" {
   dataset = module.osquery.interface.oid
   name    = "Linux Interface Summary - BetaBoard with Metrics"
   type    = "set"
-  json = templatefile("/Users/martin/terraform/myinstance/terraform-observe-linuxhost/terraform-observe-linuxhost/boards/InterfaceOverview.json", {
+  json = templatefile("${path.module}/terraform-observe-linuxhost/boards/InterfaceOverview.json", {
   dataset_server_host = regexall(":([^/:]*)(/|$)", module.osquery.host.oid)[0][0] # extract id from oid
   dataset_telegraf_netMetrics = regexall(":([^/:]*)(/|$)", module.telegraf_net[0].net_metrics.oid)[0][0] # extract id from oid
   dataset_server_interface = regexall(":([^/:]*)(/|$)", module.osquery.interface.oid)[0][0] # extract id from oid
@@ -311,7 +311,7 @@ resource "observe_board" "host_volume" {
   dataset = module.osquery.volume.oid
   name    = "Linux Volume Summary - BetaBoard with Metrics"
   type    = "set"
-  json = templatefile("/Users/martin/terraform/myinstance/terraform-observe-linuxhost/terraform-observe-linuxhost/boards/VolumeOverview.json", {
+  json = templatefile("${path.module}/terraform-observe-linuxhost/boards/VolumeOverview.json", {
   dataset_server_host = regexall(":([^/:]*)(/|$)", module.osquery.host.oid)[0][0] # extract id from oid
   dataset_telegraf_diskMetrics = regexall(":([^/:]*)(/|$)", module.telegraf_disk[0].disk_metrics.oid)[0][0] # extract id from oid
   dataset_server_volume = regexall(":([^/:]*)(/|$)", module.osquery.volume.oid)[0][0] # extract id from oid
