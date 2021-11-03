@@ -1,0 +1,23 @@
+first try to upload to git
+
+# Please enter the commit message for your changes. Lines starting
+# with '#' will be ignored, and an empty message aborts the commit.
+#
+# Date:      Wed Nov 3 09:00:20 2021 -0600
+# Committer: Martin Wiser <martin@Martins-MacBook-Pro.local>
+#
+# On branch main
+# Your branch is up to date with 'origin/main'.
+#
+# Changes to be committed:
+#	new file:   linuxhost.tf
+#	new file:   terraform-observe-fluentbit
+#	new file:   terraform-observe-linuxhost/.DS_Store
+#	new file:   terraform-observe-linuxhost/boards/InterfaceOverview.json
+#	new file:   terraform-observe-linuxhost/boards/LinuxHostSummaryMetrics.json
+#	new file:   terraform-observe-linuxhost/boards/LinuxSingleHostSummaryMetrics.json
+#	new file:   terraform-observe-linuxhost/boards/VolumeOverview.json
+#	new file:   terraform-observe-osquery
+#	new file:   terraform-observe-telegraf
+#	new file:   variables.tf
+#

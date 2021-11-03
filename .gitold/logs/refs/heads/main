@@ -1,0 +1,6 @@
+0000000000000000000000000000000000000000 602a3771a04f90421376995c598540cbd2d27497 Martin Wiser <martin@Martins-MacBook-Pro.local> 1635807891 -0600	clone: from https://github.com/mwiser-1/terraform-observe-linuxhost.git
+602a3771a04f90421376995c598540cbd2d27497 857891dcc448c6a7bc265bb023faeb431cc06a76 Martin Wiser <martin@Martins-MacBook-Pro.local> 1635951620 -0600	commit: first try to upload to git
+857891dcc448c6a7bc265bb023faeb431cc06a76 c6cebb796501ce1c981d24e639cf778f341d8c4c Martin Wiser <martin@Martins-MacBook-Pro.local> 1635952497 -0600	commit: try2
+c6cebb796501ce1c981d24e639cf778f341d8c4c 857891dcc448c6a7bc265bb023faeb431cc06a76 Martin Wiser <martin@Martins-MacBook-Pro.local> 1635952745 -0600	reset: moving to HEAD^
+857891dcc448c6a7bc265bb023faeb431cc06a76 418dddc5f9f7a000b0b244c396ff7790c2bbf350 Martin Wiser <martin@Martins-MacBook-Pro.local> 1635952891 -0600	commit (amend): first try to upload to git
+418dddc5f9f7a000b0b244c396ff7790c2bbf350 7955c1744a65fcfbd049fcbee2a48567dab2d8d4 Martin Wiser <martin@Martins-MacBook-Pro.local> 1635952990 -0600	commit (amend): first try to upload to git
