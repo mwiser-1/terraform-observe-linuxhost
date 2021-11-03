@@ -267,7 +267,7 @@ resource "observe_board" "host_board_metrics" {
   dataset = module.osquery.host.oid
   name    = "Linux Host Summary - BetaBoard with Metrics"
   type    = "set"
-  json = templatefile("/Users/martin/terraform/myinstance/terraform-observe-linuxhost/terraform-observe-linuxhost/boards/LinuxHostSummaryMetrics.json", {
+  json = templatefile("${path.module}/terraform-observe-linuxhost/boards/LinuxHostSummaryMetrics.json", {
   dataset_telegraf_systemMetrics = regexall(":([^/:]*)(/|$)", module.telegraf_system[0].system_metrics.oid)[0][0] # extract id from oid  
   dataset_server_host = regexall(":([^/:]*)(/|$)", module.osquery.host.oid)[0][0] # extract id from oid
   dataset_telegraf_memMetrics = regexall(":([^/:]*)(/|$)", module.telegraf_mem[0].mem_metrics.oid)[0][0] # extract id from oid
