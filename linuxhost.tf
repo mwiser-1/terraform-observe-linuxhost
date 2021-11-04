@@ -23,9 +23,7 @@ locals {
 }
 
 module "osquery" {
-  #source            = "git::https://github.com/observeinc/terraform-observe-osquery.git"
-  #source            = "/Users/martin/terraform/myinstance/terraform-observe-linuxhost/terraform-observe-osquery"
-  source            = "git::https://github.com/mwiser-1/terraform-observe-linuxhost.git//terraform-observe-osquery"
+  source            = "git::https://github.com/observeinc/terraform-observe-osquery.git"
   
   workspace         = var.observe_workspace
   create_resources  = ["host", "volume", "interface", "users"]
@@ -41,9 +39,7 @@ module "osquery" {
 }
 
 module "osquery_shell_history" {
-  #source            = "git::https://github.com/observeinc/terraform-observe-osquery.git//inputs/shell_history"
-  #source            = "/Users/martin/terraform/myinstance/terraform-observe-linuxhost/terraform-observe-osquery/inputs/shell_history"
-  source            = "git::https://github.com/mwiser-1/terraform-observe-linuxhost.git//terraform-observe-osquery/inputs/shell_history"
+  source            = "git::https://github.com/observeinc/terraform-observe-osquery.git//inputs/shell_history"
   workspace         = var.observe_workspace
   osquery           = module.osquery
   extract_tags      = ["host", "datacenter"]
@@ -59,9 +55,7 @@ module "osquery_shell_history" {
 }
 
 module "fluentbit" {
-  #source            = "git::https://github.com/observeinc/terraform-observe-fluentbit.git"
-  #source            = "/Users/martin/terraform/myinstance/terraform-observe-linuxhost/terraform-observe-fluentbit"
-  source            = "git::https://github.com/mwiser-1/terraform-observe-linuxhost.git//terraform-observe-fluentbit"
+  source            = "git::https://github.com/observeinc/terraform-observe-fluentbit.git"
 
   workspace         = var.observe_workspace
   create_resources  = ["log_file"]
@@ -77,9 +71,7 @@ module "fluentbit" {
 }
 
 module "fluentbit_tail" {
-  #source            = "git::https://github.com/observeinc/terraform-observe-fluentbit.git//inputs/tail"
-  #source            = "/Users/martin/terraform/myinstance/terraform-observe-linuxhost/terraform-observe-fluentbit/inputs/tail"
-  source            = "git::https://github.com/mwiser-1/terraform-observe-linuxhost.git//terraform-observe-fluentbit/inputs/tail"
+  source            = "git::https://github.com/observeinc/terraform-observe-fluentbit.git//inputs/tail"
   workspace         = var.observe_workspace
   fluentbit         = module.fluentbit
   extract_tags      = local.extract_tags
@@ -88,9 +80,7 @@ module "fluentbit_tail" {
 }
 
 module "fluentbit_systemd" {
-  #source            = "git::https://github.com/observeinc/terraform-observe-fluentbit.git//inputs/systemd"
-  #source            = "/Users/martin/terraform/myinstance/terraform-observe-linuxhost/terraform-observe-fluentbit/inputs/systemd"
-  source            = "git::https://github.com/mwiser-1/terraform-observe-linuxhost.git//terraform-observe-fluentbit/inputs/systemd"
+  source            = "git::https://github.com/observeinc/terraform-observe-fluentbit.git//inputs/systemd"
   workspace         = var.observe_workspace
   fluentbit         = module.fluentbit
   extract_tags      = local.extract_tags
@@ -100,9 +90,7 @@ module "fluentbit_systemd" {
 
 module "telegraf" {
   count           = local.enable_telegraf ? 1 : 0
-  #source            = "git::https://github.com/observeinc/terraform-observe-telegraf.git"
-  #source            = "/Users/martin/terraform/myinstance/terraform-observe-linuxhost/terraform-observe-telegraf"
-  source            = "git::https://github.com/mwiser-1/terraform-observe-linuxhost.git//terraform-observe-telegraf"
+  source            = "git::https://github.com/observeinc/terraform-observe-telegraf.git"
   workspace         = var.observe_workspace
   create_resources  = []
   link_targets      = {
@@ -117,9 +105,7 @@ module "telegraf" {
 
 module "telegraf_cpu" {
   count           = local.enable_telegraf ? 1 : 0
-  #source            = "git::https://github.com/observeinc/terraform-observe-telegraf.git//inputs/cpu"
-  #source            = "/Users/martin/terraform/myinstance/terraform-observe-linuxhost/terraform-observe-telegraf/inputs/cpu"
-  source            = "git::https://github.com/mwiser-1/terraform-observe-linuxhost.git//terraform-observe-telegraf/inputs/cpu"
+  source            = "git::https://github.com/observeinc/terraform-observe-telegraf.git//inputs/cpu"
   workspace         = var.observe_workspace
   telegraf          = module.telegraf[0]
   extract_tags      = local.extract_tags
@@ -129,9 +115,7 @@ module "telegraf_cpu" {
 
 module "telegraf_diskio" {
   count           = local.enable_telegraf ? 1 : 0
-  #source            = "git::https://github.com/observeinc/terraform-observe-telegraf.git//inputs/diskio"
-  #source            = "/Users/martin/terraform/myinstance/terraform-observe-linuxhost/terraform-observe-telegraf/inputs/diskio"
-  source            = "git::https://github.com/mwiser-1/terraform-observe-linuxhost.git//terraform-observe-telegraf/inputs/diskio"
+  source            = "git::https://github.com/observeinc/terraform-observe-telegraf.git//inputs/diskio"
   workspace         = var.observe_workspace
   telegraf          = module.telegraf[0]
   extract_tags      = local.extract_tags
@@ -141,9 +125,7 @@ module "telegraf_diskio" {
 
 module "telegraf_mem" {
   count           = local.enable_telegraf ? 1 : 0
-  #source            = "git::https://github.com/observeinc/terraform-observe-telegraf.git//inputs/mem"
-  #source            = "/Users/martin/terraform/myinstance/terraform-observe-linuxhost/terraform-observe-telegraf/inputs/mem"
-  source            = "git::https://github.com/mwiser-1/terraform-observe-linuxhost.git//terraform-observe-telegraf/inputs/mem"
+  source            = "git::https://github.com/observeinc/terraform-observe-telegraf.git//inputs/mem"
   workspace         = var.observe_workspace
   telegraf          = module.telegraf[0]
   extract_tags      = local.extract_tags
@@ -153,9 +135,7 @@ module "telegraf_mem" {
 
 module "telegraf_disk" {
   count           = local.enable_telegraf ? 1 : 0
-  #source            = "git::https://github.com/observeinc/terraform-observe-telegraf.git//inputs/disk"
-  #source            = "/Users/martin/terraform/myinstance/terraform-observe-linuxhost/terraform-observe-telegraf/inputs/disk"
-  source            = "git::https://github.com/mwiser-1/terraform-observe-linuxhost.git//terraform-observe-telegraf/inputs/disk"
+  source            = "git::https://github.com/observeinc/terraform-observe-telegraf.git//inputs/disk"
   workspace         = var.observe_workspace
   telegraf          = module.telegraf[0]
   extract_tags      = local.extract_tags
@@ -172,9 +152,7 @@ module "telegraf_disk" {
 
 module "telegraf_kernel" {
   count           = local.enable_telegraf ? 1 : 0
-  #source            = "git::https://github.com/observeinc/terraform-observe-telegraf.git//inputs/kernel"
-  #source            = "/Users/martin/terraform/myinstance/terraform-observe-linuxhost/terraform-observe-telegraf/inputs/kernel"
-  source            = "git::https://github.com/mwiser-1/terraform-observe-linuxhost.git//terraform-observe-telegraf/inputs/kernel"
+  source            = "git::https://github.com/observeinc/terraform-observe-telegraf.git//inputs/kernel"
   workspace         = var.observe_workspace
   telegraf          = module.telegraf[0]
   extract_tags      = local.extract_tags
@@ -184,9 +162,7 @@ module "telegraf_kernel" {
 
 module "telegraf_processes" {
   count           = local.enable_telegraf ? 1 : 0
-  #source            = "git::https://github.com/observeinc/terraform-observe-telegraf.git//inputs/processes"
-  #source            = "/Users/martin/terraform/myinstance/terraform-observe-linuxhost/terraform-observe-telegraf/inputs/processes"
-  source            = "git::https://github.com/mwiser-1/terraform-observe-linuxhost.git//terraform-observe-telegraf/inputs/processes"
+  source            = "git::https://github.com/observeinc/terraform-observe-telegraf.git//inputs/processes"
   workspace         = var.observe_workspace
   telegraf          = module.telegraf[0]
   extract_tags      = local.extract_tags
@@ -196,9 +172,7 @@ module "telegraf_processes" {
 
 module "telegraf_swap" {
   count           = local.enable_telegraf ? 1 : 0
-  #source            = "git::https://github.com/observeinc/terraform-observe-telegraf.git//inputs/swap"
-  #source            = "/Users/martin/terraform/myinstance/terraform-observe-linuxhost/terraform-observe-telegraf/inputs/swap"
-  source            = "git::https://github.com/mwiser-1/terraform-observe-linuxhost.git//terraform-observe-telegraf/inputs/swap"
+  source            = "git::https://github.com/observeinc/terraform-observe-telegraf.git//inputs/swap"
   workspace         = var.observe_workspace
   telegraf          = module.telegraf[0]
   extract_tags      = local.extract_tags
@@ -208,9 +182,7 @@ module "telegraf_swap" {
 
 module "telegraf_system" {
   count           = local.enable_telegraf ? 1 : 0
-  #source            = "git::https://github.com/observeinc/terraform-observe-telegraf.git//inputs/system"
-  #source            = "/Users/martin/terraform/myinstance/terraform-observe-linuxhost/terraform-observe-telegraf/inputs/system"
-  source            = "git::https://github.com/mwiser-1/terraform-observe-linuxhost.git//terraform-observe-telegraf/inputs/system"
+  source            = "git::https://github.com/observeinc/terraform-observe-telegraf.git//inputs/system"
   workspace         = var.observe_workspace
   telegraf          = module.telegraf[0]
   extract_tags      = local.extract_tags
@@ -220,9 +192,7 @@ module "telegraf_system" {
 
 module "telegraf_ntpq" {
   count           = local.enable_telegraf ? 1 : 0
-  #source            = "git::https://github.com/observeinc/terraform-observe-telegraf.git//inputs/ntpq"
-  #source            = "/Users/martin/terraform/myinstance/terraform-observe-linuxhost/terraform-observe-telegraf/inputs/ntpq"
-  source            = "git::https://github.com/mwiser-1/terraform-observe-linuxhost.git//terraform-observe-telegraf/inputs/ntpq"
+  source            = "git::https://github.com/observeinc/terraform-observe-telegraf.git//inputs/ntpq"
   workspace         = var.observe_workspace
   telegraf          = module.telegraf[0]
   extract_tags      = local.extract_tags
@@ -232,9 +202,7 @@ module "telegraf_ntpq" {
 
 module "telegraf_linux_sysctl_fs" {
   count           = local.enable_telegraf ? 1 : 0
-  #source            = "git::https://github.com/observeinc/terraform-observe-telegraf.git//inputs/linux_sysctl_fs"
-  #source            = "/Users/martin/terraform/myinstance/terraform-observe-linuxhost/terraform-observe-telegraf/inputs/linux_sysctl_fs"
-  source            = "git::https://github.com/mwiser-1/terraform-observe-linuxhost.git//terraform-observe-telegraf/inputs/linux_sysctl_fs"
+  source            = "git::https://github.com/observeinc/terraform-observe-telegraf.git//inputs/linux_sysctl_fs"
   workspace         = var.observe_workspace
   telegraf          = module.telegraf[0]
   extract_tags      = local.extract_tags
@@ -244,9 +212,7 @@ module "telegraf_linux_sysctl_fs" {
 
 module "telegraf_net" {
   count           = local.enable_telegraf ? 1 : 0
-  #source            = "git::https://github.com/observeinc/terraform-observe-telegraf.git//inputs/net"
-  #source            = "/Users/martin/terraform/myinstance/terraform-observe-linuxhost/terraform-observe-telegraf/inputs/net"
-  source            = "git::https://github.com/mwiser-1/terraform-observe-linuxhost.git//terraform-observe-telegraf/inputs/net"
+  source            = "git::https://github.com/observeinc/terraform-observe-telegraf.git//inputs/net"
 
   workspace         = var.observe_workspace
   telegraf          = module.telegraf[0]

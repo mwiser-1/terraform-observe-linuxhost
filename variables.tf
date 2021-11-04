@@ -16,7 +16,7 @@ variable "enable_telegraf" {
 
 variable "observation_dataset" {
   type        = string
-  description = "Name of dataset to derive kubernetes resources from."
+  description = "Name of dataset to derive resources from."
   default     = "Observation"
 }
 
